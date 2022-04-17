@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public static GameManager Instance { get; private set; }
+    [SerializeField]
+    private GameTimer _gameTimer = default;
+    [SerializeField]
+    private EnemyGenerator _generator = default;
+    
+    public void StartGame()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        _gameTimer.StartTimer();
+        _generator.StartGenerator();
     }
 }
