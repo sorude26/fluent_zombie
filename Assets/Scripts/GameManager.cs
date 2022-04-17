@@ -9,7 +9,15 @@ public class GameManager : MonoBehaviour
     private GameTimer _gameTimer = default;
     [SerializeField]
     private EnemyGenerator _generator = default;
-    
+    [SerializeField]
+    GameObject _gameOver = default;
+    [SerializeField]
+    GameObject _gameClear = default;
+    private IEnumerator Start()
+    {
+        yield return null;
+        StartGame();
+    }
     public void StartGame()
     {
         _gameTimer.StartTimer();
