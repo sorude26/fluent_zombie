@@ -13,6 +13,10 @@ public class GameManager : MonoBehaviour
     GameObject _gameOver = default;
     [SerializeField]
     GameObject _gameClear = default;
+    private void Awake()
+    {
+        Instance = this;
+    }
     private IEnumerator Start()
     {
         yield return null;
@@ -22,5 +26,9 @@ public class GameManager : MonoBehaviour
     {
         _gameTimer.StartTimer();
         _generator.StartGenerator();
+    }
+    public void GameOver()
+    {
+
     }
 }
