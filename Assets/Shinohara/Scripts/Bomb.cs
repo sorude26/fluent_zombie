@@ -33,9 +33,10 @@ public class Bomb : MonoBehaviour
     
         foreach (var c in cols)
         {
-            if (c.gameObject.name == "Enemy")   //当たっているオブジェクト名がEnemyだったら削除する
+            if (c.gameObject.tag == "Enemy")   //当たっているオブジェクト名がEnemyだったら削除する
             {
                 Destroy(c.gameObject);
+                ScoreManager.AddScore();
             }
         }
 
