@@ -11,8 +11,13 @@ public class EnemyMove : MonoBehaviour
     void Start()
     {
         _agent = GetComponent<NavMeshAgent>();
-        _player = GameObject.Find("Player");
-        _agent.SetDestination(_player.transform.position);
+
+        if (GameObject.Find("Player") != null)  //ƒvƒŒƒCƒ„[‚ª‘¶İ‚·‚ê‚Îæ“¾‚·‚é
+        {
+            _player = GameObject.Find("Player");
+            _agent.SetDestination(_player.transform.position);
+        }
+
         _agent.speed = _moveSpeed;
         _agent.updateRotation = false;  //‰ñ“]‚ğ‚³‚¹‚È‚¢
     }
@@ -20,6 +25,9 @@ public class EnemyMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        _agent.SetDestination(_player.transform.position);
+        if (_player != null)
+        {
+            _agent.SetDestination(_player.transform.position);
+        }
     }
 }
