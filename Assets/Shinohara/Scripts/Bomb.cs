@@ -7,6 +7,7 @@ public class Bomb : MonoBehaviour
     [SerializeField, Header("爆発半径")] float _explosionRadius = 5f;
     [SerializeField, Header("起動までの時間")] float _explosionTime = 3f;
     [SerializeField, Header("飛ばす時にかける力")] float _forcePower = 10f;
+    [SerializeField] GameObject _effect = default;
 
     private void OnDrawGizmosSelected() //爆発範囲のギズモを表示する
     {
@@ -28,7 +29,11 @@ public class Bomb : MonoBehaviour
     private IEnumerator StartUp()
     {
         yield return new WaitForSeconds(_explosionTime);
-        Debug.Log("起爆");
+        //Debug.Log("起爆");
+        if (_effect)
+        {
+            Instantiate(_effect).transform.position = GetCenter();
+        }
         var cols = Physics.OverlapSphere(GetCenter(), _explosionRadius);   //当たっているオブジェクトを全て取得するする
     
         foreach (var c in cols)

@@ -9,7 +9,7 @@ public  class EnemyHP : HPManager
 
     public void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.name == "PlayerGan")
+        if(collision.gameObject.tag == "Player")
         {
             _enemyHp -= _playerAttack;
            // Debug.Log("EnemyHP:" + _enemyHp);
