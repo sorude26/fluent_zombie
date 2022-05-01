@@ -4,11 +4,6 @@ using UnityEngine;
 
 public class PlayerHP : HPManager
 {
-    private void Update()
-    {
-        
-    }
-
     private void OnCollisionEnter(Collision collision)
     {
         if(collision.gameObject.name == "Enemy")
