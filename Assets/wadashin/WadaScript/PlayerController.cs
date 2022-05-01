@@ -43,9 +43,12 @@ public class PlayerController : MonoBehaviour
         fireBakyun = fireBullets;
         fireFire = true;
 
-        slider.maxValue = fireBullets;    // Sliderの最大値を敵キャラのHP最大値と合わせる
-        fireBakyun = fireBullets;
-        slider.value = fireBakyun;	// Sliderの初期状態を設定（HP満タン）
+        if (slider != null)
+        {
+            slider.maxValue = fireBullets;    // Sliderの最大値を敵キャラのHP最大値と合わせる
+            fireBakyun = fireBullets;
+            slider.value = fireBakyun;	// Sliderの初期状態を設定（HP満タン）
+        }
     }
 
     // Update is called once per frame
@@ -60,9 +63,9 @@ public class PlayerController : MonoBehaviour
         //キャラクターの向きを入力に応じて変える
         if (v < 0)
         {
-            transform.rotation = Quaternion.Euler(0,180,0);
+            transform.rotation = Quaternion.Euler(0, 180, 0);
         }
-        else if(v > 0)
+        else if (v > 0)
         {
             transform.rotation = Quaternion.Euler(0, 0, 0);
         }
@@ -74,41 +77,43 @@ public class PlayerController : MonoBehaviour
         {
             transform.rotation = Quaternion.Euler(0, 90, 0);
         }
-
-        //連射制限の時間加算
-        if(time < _rapidFireTime)
+        if (slider != null)
         {
-            time += Time.deltaTime;
-        }
-        //ファイヤーボール発射
-        if (fireFire)
-        {
-            if (Input.GetButton("Fire1") && time >= _rapidFireTime)
+            //連射制限の時間加算
+            if (time < _rapidFireTime)
             {
-                Instantiate(fireBall);
-                time = 0;
-                fireBakyun--;
+                time += Time.deltaTime;
             }
-        }
-        else
-        {
-            fireBakyun += 0.1f;
-            if(fireBakyun >= fireBullets)
+            //ファイヤーボール発射
+            if (fireFire)
             {
-                fireBakyun = fireBullets;
-                fireFire = true;
+                if (Input.GetButton("Fire1") && time >= _rapidFireTime)
+                {
+                    Instantiate(fireBall);
+                    time = 0;
+                    fireBakyun--;
+                }
             }
-        }
-        //スライダーの表示更新
-        slider.value = fireBakyun;
+            else
+            {
+                fireBakyun += 0.1f;
+                if (fireBakyun >= fireBullets)
+                {
+                    fireBakyun = fireBullets;
+                    fireFire = true;
+                }
+            }
+            //スライダーの表示更新
+            slider.value = fireBakyun;
 
-        //残弾の管理
-        if (fireBakyun <= 0)
-        {
-            fireFire = false;
+            //残弾の管理
+            if (fireBakyun <= 0)
+            {
+                fireFire = false;
+            }
+            Debug.Log(fireFire);
+            Debug.Log(fireBakyun);
         }
-        Debug.Log(fireFire);
-        Debug.Log(fireBakyun);
     }
 
     private void FixedUpdate()
