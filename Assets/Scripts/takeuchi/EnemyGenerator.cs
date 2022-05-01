@@ -9,7 +9,7 @@ public class EnemyGenerator : MonoBehaviour
     private Transform[] _spawnPoints = default;
     [Tooltip("敵のPrefab")]
     [SerializeField]
-    private GameObject _enemyPrefab = default;
+    private GameObject[] _enemyPrefab = default;
     [Tooltip("出現時間")]
     [SerializeField]
     private float _spawnTime = 2f;
@@ -23,13 +23,15 @@ public class EnemyGenerator : MonoBehaviour
     private float _spawnSpeed = 1f;
     /// <summary> 起動フラグ </summary>
     private bool _isStart = false;
+    int _number;
     /// <summary>
     /// ランダムな出現位置に敵をスポーンさせる
     /// </summary>
     private void SpawnEnemy()
     {
         int r = Random.Range(0, _spawnPoints.Length);
-        Instantiate(_enemyPrefab, _spawnPoints[r]);
+        _number = Random.Range(0, _enemyPrefab.Length);
+        Instantiate(_enemyPrefab[_number], _spawnPoints[r]);
     }
     private IEnumerator GeneratorUpdate()
     {
