@@ -131,3 +131,4 @@ MonoBehaviour:
   _explosionRadius: 5
   _explosionTime: 3
   _forcePower: 10
+  _effect: {fileID: 7580873207360569003, guid: a98230fcf08c26641afd2bed4d452729, type: 3}

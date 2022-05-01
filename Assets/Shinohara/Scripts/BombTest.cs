@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class BombTest : MonoBehaviour
 {
+    [SerializeField] Transform _muzzle = default;
     [SerializeField] GameObject _bomb = default;
    
     // Update is called once per frame
@@ -9,7 +10,7 @@ public class BombTest : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            GameObject go = Instantiate(_bomb, transform.position, Quaternion.identity);
+            GameObject go = Instantiate(_bomb, _muzzle.position, Quaternion.identity);
             go.GetComponent<Bomb>().AddForce(transform.forward);
         }
 

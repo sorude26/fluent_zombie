@@ -30,12 +30,14 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float _MoveMaxPower = 10;
 
     //ファイヤーボール
-    [SerializeField] GameObject fireBall;
+    [SerializeField] FireBallScript fireBall;
     //ファイヤーボールの連射間隔
     [SerializeField] float _rapidFireTime = 1;
 
     //残弾スライダー
     [SerializeField] Slider slider;
+
+    [SerializeField] Transform _muzzle = default;
     // Start is called before the first frame update
     void Start()
     {
@@ -89,7 +91,9 @@ public class PlayerController : MonoBehaviour
             {
                 if (Input.GetButton("Fire1") && time >= _rapidFireTime)
                 {
-                    Instantiate(fireBall);
+                    var f = Instantiate(fireBall);
+                    f.transform.position = _muzzle.position;
+                    f.StartShot(transform);
                     time = 0;
                     fireBakyun--;
                 }
@@ -111,8 +115,8 @@ public class PlayerController : MonoBehaviour
             {
                 fireFire = false;
             }
-            Debug.Log(fireFire);
-            Debug.Log(fireBakyun);
+            //Debug.Log(fireFire);
+            //Debug.Log(fireBakyun);
         }
     }
 
