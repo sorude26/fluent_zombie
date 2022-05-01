@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class HPManager : MonoBehaviour
 {
     /// <summary>プレイヤーの攻撃値</summary>
-    public int _playerAttack = 2;
+    public int _playerAttack = 1;
     /// <summary>プレイヤーのHP</summary>
     public int _playerHp = 10;
     /// <summary>エネミーの攻撃値</summary>
@@ -27,7 +27,7 @@ public class HPManager : MonoBehaviour
     public void PlayerHP()
     {
         _playerHp -= _enemyAttack;
-        _playerHpText.text += _playerHp;
+        //_playerHpText.text += _playerHp;
         Debug.Log( "プレイヤーのHP:" + _playerHp);
 
         if(_playerHp <= 0)
@@ -39,7 +39,7 @@ public class HPManager : MonoBehaviour
     public void Score()
     {
         _score += _enemyScore;
-        _scoreText.text += _score;
+        //_scoreText.text += _score;
         Debug.Log( "Scoce:" + _score);
     }
 }
