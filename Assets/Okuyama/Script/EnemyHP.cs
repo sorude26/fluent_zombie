@@ -12,7 +12,7 @@ public  class EnemyHP : HPManager
         if(collision.gameObject.name == "PlayerGan")
         {
             _enemyHp -= _playerAttack;
-            Debug.Log("EnemyHP:" + _enemyHp);
+           // Debug.Log("EnemyHP:" + _enemyHp);
             if (_enemyHp <= 0)
             {
                 Destroy(gameObject);

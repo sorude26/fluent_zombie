@@ -23,22 +23,22 @@ public class HPManager : MonoBehaviour
     static int _score;
     /// <summary>無敵時間のBool</summary>
     public bool _noDamagiBool = false;
-
-    private void Start()
+    public void UpdateHP()
     {
-        Debug.Log("Scoce:" + _score);
+        _playerHpText.text = "HP:" + _playerHp;
     }
 
     public void PlayerHP()
     {
         if (_noDamagiBool == true) return;
         _playerHp -= _enemyAttack;
-        //_playerHpText.text += _playerHp;
-        Debug.Log( "プレイヤーのHP:" + _playerHp);
+        UpdateHP();
+        //Debug.Log( "プレイヤーのHP:" + _playerHp);
         _noDamagiBool = true;
         if (_playerHp <= 0)
         {
-            Debug.Log("ゲームオーバー");
+            GameManager.Instance.GameOver();
+           // Debug.Log("ゲームオーバー");
         }
     }
 }
