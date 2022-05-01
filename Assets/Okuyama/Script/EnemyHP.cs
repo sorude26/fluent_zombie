@@ -5,7 +5,7 @@ using UnityEngine;
 public  class EnemyHP : HPManager
 {
     /// <summary>エネミーのHP</summary>
-    int _enemyHp = 4;
+    [SerializeField] int _enemyHp = 4;
 
     public void OnCollisionEnter(Collision collision)
     {
