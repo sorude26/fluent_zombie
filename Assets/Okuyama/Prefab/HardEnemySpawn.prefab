@@ -106,7 +106,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 8260fe29edeffe348ae8158803ebf2f6, type: 3}
-  m_Color: {r: 0.32488427, g: 0.33962262, b: 0.33611348, a: 1}
+  m_Color: {r: 0.3254902, g: 0.34117648, b: 0.3372549, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -128,7 +128,7 @@ GameObject:
   - component: {fileID: 3906693387415954357}
   - component: {fileID: 3906693387415954358}
   m_Layer: 0
-  m_Name: SpawnEnemy
+  m_Name: HardEnemySpawn
   m_TagString: Untagged
   m_Icon: {fileID: 4422084297763085224, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -162,7 +162,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9966d23a15e3a7498290dfffad84512, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _enemy: {fileID: 5157569041118253016, guid: 0b0d377f7b0e5ab47bedf8a2bb2f892b, type: 3}
+  _enemy: {fileID: 5157569041118253016, guid: 863564396ad10264685b9e96d81e597e, type: 3}
   _maxAwakeTime: 10
   _animator: {fileID: 3906693387415954358}
 --- !u!95 &3906693387415954358
