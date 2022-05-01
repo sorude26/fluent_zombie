@@ -163,6 +163,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enemy: {fileID: 5157569041118253016, guid: 0b0d377f7b0e5ab47bedf8a2bb2f892b, type: 3}
+  _maxAwakeTime: 10
+  _animator: {fileID: 3906693387415954358}
 --- !u!95 &3906693387415954358
 Animator:
   serializedVersion: 4

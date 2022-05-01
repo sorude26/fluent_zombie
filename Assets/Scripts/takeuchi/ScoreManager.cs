@@ -1,11 +1,22 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+using System;
 
 public class ScoreManager
 {
-    public static int Score { get; private set; }
-    public static void AddScore(int score)
+    private static int score = default;
+    public static int Score 
+    {
+        get 
+        { 
+            return score;
+        }
+        private set 
+        {
+            score = value;
+            DelUpdateScore?.Invoke();
+        }
+    }
+    public static event Action DelUpdateScore;
+    public static void AddScore(int score = 1)
     {
         Score += score;
     }

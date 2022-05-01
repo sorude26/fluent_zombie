@@ -18,17 +18,16 @@ public class Scissors : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        _enemyHPScript = other.gameObject.GetComponent<EnemyHP>();
-        if (other.gameObject.name == "Enemy")
+        if (other.gameObject.tag == "Enemy")
         {
+            _enemyHPScript = other.gameObject.GetComponent<EnemyHP>();
             _scissorsAnim.SetTrigger("ScissorsTrigger");
-                
         }
     }
     // アニメーションが終了したときに呼ばれるメソッド
     public void ScissorsAnimStop()
     {
         _enemyHPScript._playerAttack = _scissorsAttack;
-        Debug.Log(_enemyHPScript._playerAttack);
+        //Debug.Log(_enemyHPScript._playerAttack);
     }
 }
