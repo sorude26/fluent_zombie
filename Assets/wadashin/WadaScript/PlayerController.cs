@@ -17,12 +17,13 @@ public class PlayerController : MonoBehaviour
     [SerializeField] int fireBullets;
     //炎のマガジン数
     float fireBakyun;
-
+    [SerializeField] float g = -9.8f;
 
     Rigidbody rb;
     Vector3 dir;
     //前回のPosition
     Vector3 latestPos;
+    Vector3 _moveVector = default;
 
     //移動速度変更用の値
     [SerializeField] float _MovePower = 10;
@@ -122,9 +123,8 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (rb.velocity.magnitude < _MoveMaxPower)
-        {
-            rb.AddForce(dir.normalized * _MovePower, ForceMode.Force);
-        }
+        _moveVector = dir.normalized * _MovePower;
+        _moveVector.y = rb.velocity.y + g;
+        rb.velocity = _moveVector;
     }
 }
