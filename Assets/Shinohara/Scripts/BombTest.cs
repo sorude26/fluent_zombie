@@ -14,22 +14,22 @@ public class BombTest : MonoBehaviour
         }
 
         
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            transform.Rotate(0, -90, 0);
-        }
-        else if (Input.GetKeyDown(KeyCode.D))
-        {
-            transform.Rotate(0, 90, 0);
-        }
+        //if (Input.GetKeyDown(KeyCode.A))
+        //{
+        //    transform.Rotate(0, -90, 0);
+        //}
+        //else if (Input.GetKeyDown(KeyCode.D))
+        //{
+        //    transform.Rotate(0, 90, 0);
+        //}
 
-        if (Input.GetKeyDown(KeyCode.W))
-        {
-            transform.Rotate(-20, 0, 0);
-        }
-        else if (Input.GetKeyDown(KeyCode.S))
-        {
-            transform.Rotate(20, 0, 0);
-        }
+        //if (Input.GetKeyDown(KeyCode.W))
+        //{
+        //    transform.Rotate(-20, 0, 0);
+        //}
+        //else if (Input.GetKeyDown(KeyCode.S))
+        //{
+        //    transform.Rotate(20, 0, 0);
+        //}
     }
 }
