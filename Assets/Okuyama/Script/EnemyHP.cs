@@ -7,7 +7,7 @@ public  class EnemyHP : HPManager
     /// <summary>エネミーのHP</summary>
     int _enemyHp = 4;
 
-    private void OnCollisionEnter(Collision collision)
+    public void OnCollisionEnter(Collision collision)
     {
         if(collision.gameObject.name == "PlayerGan")
         {
