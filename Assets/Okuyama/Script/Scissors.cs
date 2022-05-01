@@ -21,13 +21,14 @@ public class Scissors : MonoBehaviour
         if (other.gameObject.tag == "Enemy")
         {
             _enemyHPScript = other.gameObject.GetComponent<EnemyHP>();
-            _scissorsAnim.SetTrigger("ScissorsTrigger");
+            _enemyHPScript._playerAttack = _scissorsAttack;
         }
     }
-    // アニメーションが終了したときに呼ばれるメソッド
-    public void ScissorsAnimStop()
+    private void Update()
     {
-        _enemyHPScript._playerAttack = _scissorsAttack;
-        //Debug.Log(_enemyHPScript._playerAttack);
+        if (Input.GetMouseButton(1))
+        {
+            _scissorsAnim.SetTrigger("ScissorsTrigger");
+        }
     }
 }
