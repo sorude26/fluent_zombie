@@ -17,29 +17,28 @@ public class HPManager : MonoBehaviour
     [SerializeField] Text _playerHpText;
     /// <summary>エネミーのHPテキスト</summary>
     [SerializeField] Text _scoreText;
+    /// <summary>無敵時間</summary>
+    public float _noDamagiTime = 2;
     /// <summary>スコア合計</summary>
     static int _score;
+    /// <summary>無敵時間のBool</summary>
+    public bool _noDamagiBool = false;
 
     private void Start()
     {
         Debug.Log("Scoce:" + _score);
     }
+
     public void PlayerHP()
     {
+        if (_noDamagiBool == true) return;
         _playerHp -= _enemyAttack;
         //_playerHpText.text += _playerHp;
         Debug.Log( "プレイヤーのHP:" + _playerHp);
-
-        if(_playerHp <= 0)
+        _noDamagiBool = true;
+        if (_playerHp <= 0)
         {
             Debug.Log("ゲームオーバー");
         }
-    }
-
-    public void Score()
-    {
-        _score += _enemyScore;
-        //_scoreText.text += _score;
-        Debug.Log( "Scoce:" + _score);
     }
 }
