@@ -7,15 +7,15 @@ public class SpawnEnemy : MonoBehaviour
     [SerializeField]
     private GameObject _enemy = default;
     [SerializeField]
-    private float _maxAwakeTime = 2f;
+    private float _maxAwakeTime = 5f;
+    [SerializeField]
     private Animator _animator;
     private IEnumerator Start()
     {
         _animator = GetComponent<Animator>();
-        _animator.enabled = false;
         float time = Random.Range(0, _maxAwakeTime);
         yield return new WaitForSeconds(time);
-        _animator.enabled = true;
+        _animator.Play("Spawn");
     }
     public void Spawn()
     {
