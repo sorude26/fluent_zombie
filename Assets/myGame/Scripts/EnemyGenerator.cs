@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
 namespace Perapera_Puroto
 {
     public class EnemyGenerator : MonoBehaviour
