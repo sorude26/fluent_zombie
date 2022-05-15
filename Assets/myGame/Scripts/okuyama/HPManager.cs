@@ -25,6 +25,11 @@ namespace Perapera_Puroto
         int MINI_PLAYER_HP = 0;
         /// <summary>プレイヤーの攻撃値</summary>
         public int _playerAttack = 1;
+        protected Damage IDamage;
+        private void Start()
+        {
+            IDamage = new Damage(_playerAttack);
+        }
 
         public void UpdateHP()
         {
@@ -34,7 +39,7 @@ namespace Perapera_Puroto
         public void PlayerHP()
         {
             if (_noDamagiBool == true) return;
-            _playerHp -= _enemyAttack;
+            _playerHp -= IDamage._damage;
             UpdateHP();
             
             _noDamagiBool = true;
