@@ -12,17 +12,19 @@ namespace Perapera_Puroto
 
         /// <summary>Ï‚İã‚°‚é”</summary>
         [SerializeField]
-        int num;
+        int _num;
 
         /// <summary>Ï‚İã‚°‚É‚©‚¯‚éŠÔ</summary>
         [SerializeField]
-        int stackTime = 1;
+        int _stackTime = 1;
 
-        public float speed = 1.0F;
+        /// <summary>Ï‚İã‚°ŠJn‚Ì‚‚³</summary>
+        [SerializeField]
+        float _firstPos;
 
-        float now = 0;
 
         float nowCadaver = 0;
+
 
         //Ï‚İã‚°‚é€‘Ì‚ÌŒú‚İ
         float high;
@@ -40,13 +42,15 @@ namespace Perapera_Puroto
         void Start()
         {
             high = _dethObj.transform.localScale.y;
+
+            //high = transform.GetChild(0)_dethObj.transform.localScale.y;
             //lowPosi = new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z);
             //topPosi = new Vector3(this.transform.position.x, this.transform.position.y + (high * (num)), this.transform.position.z);
 
-            cadaverPos = new Vector3(this.transform.position.x,this.transform.position.y + 3,this.transform.position.z);
+            cadaverPos = new Vector3(this.transform.position.x,this.transform.position.y + (high / 2) + _firstPos, this.transform.position.z);
 
-            float stuckInterval = (float)stackTime / (float)num;
-            InvokeRepeating("StackDeth", 0, stuckInterval);
+            float stuckInterval = (float)_stackTime / (float)_num;
+            InvokeRepeating("StackDeth", 1, stuckInterval);
         }
         void Update()
         {
@@ -61,7 +65,7 @@ namespace Perapera_Puroto
             //}
 
 
-            if (nowCadaver >= num)
+            if (nowCadaver >= _num)
             {
                 CancelInvoke();
             }
