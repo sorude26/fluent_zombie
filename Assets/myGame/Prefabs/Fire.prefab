@@ -4864,7 +4864,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8581835776770377045}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -4921,13 +4921,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 8581835776770377045}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cab0c9ded2403624c8afe66b2384a6bd, type: 3}
+  m_Script: {fileID: 11500000, guid: 0e59d94e1d921684ea3fd1d894bdb02e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _power: 1
-  _randomMax: 11
-  _randomMin: -12
-  deleteTime: 0.3
+  _randomMax: 0
+  _randomMin: 0
+  deleteTime: 2
 --- !u!54 &1842721477510743251
 Rigidbody:
   m_ObjectHideFlags: 0
