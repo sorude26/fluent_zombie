@@ -21,4 +21,13 @@ public  class EnemyHP : HPManager
             
         }
     }
+    public void Damage(int damage)
+    {
+        _enemyHp -= damage;
+        if (_enemyHp <= 0)
+        {
+            Destroy(gameObject);
+            ScoreManager.AddScore(1);
+        }
+    }
 }

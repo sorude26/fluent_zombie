@@ -10,7 +10,7 @@ public class GameTimer : MonoBehaviour
     private const int ONE_SECOND = 1;
     private const int CARRY_NUMBER = 10;
     /// <summary> タイマー停止時のイベント </summary>
-    public event Action DelTimerStop = default;
+    public event Action DelTimerStop;
     [Tooltip("終了時間")]
     [SerializeField]
     private int _maxCountTime = 60;
@@ -62,6 +62,7 @@ public class GameTimer : MonoBehaviour
             yield return null;
         }
         DelTimerStop?.Invoke();
+        DelTimerStop = null;
         _isStart = false;
     }
     /// <summary>
