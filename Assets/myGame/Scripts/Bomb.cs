@@ -5,20 +5,20 @@ namespace Perapera_Puroto
 {
     public class Bomb : MonoBehaviour
     {
-        [SerializeField, Header("爆発の中心")] 
+        [SerializeField, Header("爆発の中心")]
         Vector3 _explosionCenter = default;
-        [SerializeField, Header("爆発半径")] 
+        [SerializeField, Header("爆発半径")]
         float _explosionRadius = 5f;
-        [SerializeField, Header("起動までの時間")] 
+        [SerializeField, Header("起動までの時間")]
         float _explosionTime = 3f;
-        [SerializeField, Header("飛ばす時にかける力")] 
+        [SerializeField, Header("飛ばす時にかける力")]
         float _forcePower = 10f;
-        [SerializeField] 
+        [SerializeField, Tooltip("爆発エフェクト")]
         GameObject _effect = default;
-        [SerializeField] 
+        [SerializeField, Tooltip("敵に与えるダメージ")]
         int _damage = 2;
 
-        private void OnDrawGizmosSelected() //爆発範囲のギズモを表示する
+        void OnDrawGizmosSelected() //爆発範囲のギズモを表示する
         {
             Gizmos.color = Color.red;
             Gizmos.DrawWireSphere(GetCenter(), _explosionRadius);
@@ -44,7 +44,7 @@ namespace Perapera_Puroto
         }
 
         /// <summary>一定時間後爆弾を起爆させ敵にダメージを与える </summary>
-        private IEnumerator StartUp()
+        IEnumerator StartUp()
         {
             yield return new WaitForSeconds(_explosionTime);
             //Debug.Log("起爆");

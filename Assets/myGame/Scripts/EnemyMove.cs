@@ -7,10 +7,11 @@ namespace Perapera_Puroto
     {
         [SerializeField, Header("移動速度")]
         float _moveSpeed = 3f;
-        private NavMeshAgent _agent = default;
-        private GameObject _player = default;
+        /// <summary>プレイヤーを追いかけるナビメッシュ </summary>
+        NavMeshAgent _agent = default;
+        /// <summary>プレイヤー </summary>
+        GameObject _player = default;
 
-        // Start is called before the first frame update
         void Start()
         {
             _agent = GetComponent<NavMeshAgent>();
@@ -25,7 +26,6 @@ namespace Perapera_Puroto
             _agent.updateRotation = false;  //回転をさせない
         }
 
-        // Update is called once per frame
         void Update()
         {
             if (_player != null)

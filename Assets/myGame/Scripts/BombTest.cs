@@ -9,7 +9,6 @@ namespace Perapera_Puroto
         [SerializeField, Tooltip("ê∂ê¨å≥")]
         GameObject _bomb = default;
 
-        // Update is called once per frame
         void Update()
         {
             if (Input.GetKeyDown(KeyCode.Space))
