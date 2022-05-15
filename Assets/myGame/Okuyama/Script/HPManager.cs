@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Perapera_Puroto;
 
 public class HPManager : MonoBehaviour
 {
@@ -37,7 +38,7 @@ public class HPManager : MonoBehaviour
         _noDamagiBool = true;
         if (_playerHp <= 0)
         {
-            GameManager.Instance.GameOver();
+           GameManager.Instance.GameOver();
            // Debug.Log("ゲームオーバー");
         }
     }
