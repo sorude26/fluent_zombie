@@ -2422,14 +2422,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e09a42f95031fa4f8050c772956e0c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerAttack: 2
-  _playerHp: 10
-  _enemyAttack: 2
   _enemyScore: 1
   _playerHpText: {fileID: 1580638531}
   _scoreText: {fileID: 1252994710}
-  _noDamagiTime: 2
-  _noDamagiBool: 0
+  _playerAttack: 2
 --- !u!54 &952398978
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2455,16 +2451,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 952398971}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 94dfbe2f4f1bf93469b46d1f92ed1baf, type: 3}
+  m_Script: {fileID: 11500000, guid: 3b93b38eefa32cb4eb3c1456cb8ee6df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireBullets: 800
   _MovePower: 60
   _MoveMaxPower: 5
   fireBall: {fileID: 8581835776770377044, guid: 05ef2cd10d4051e438341b628bdda482, type: 3}
   _rapidFireTime: 0.05
   slider: {fileID: 1354875052}
   _muzzle: {fileID: 1759357486}
+  g: -9.8
+  fireBullets: 800
 --- !u!114 &952398980
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4892,6 +4889,7 @@ MonoBehaviour:
   _gameOver: {fileID: 225957307}
   _gameClear: {fileID: 169079513}
   _scoreText: {fileID: 1252994710}
+  _isGameOver: 0
 --- !u!4 &1984546794
 Transform:
   m_ObjectHideFlags: 0
