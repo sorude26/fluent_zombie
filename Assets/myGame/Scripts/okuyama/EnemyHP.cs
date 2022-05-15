@@ -17,7 +17,7 @@ namespace Perapera_Puroto
         {
             if (collision.gameObject.tag == "Player")
             {
-                _enemyHp -= IDamage._enemyDamage;
+                _enemyHp -= IDamage._damage;
                 
                 if (_enemyHp <= MINI_HP)
                 {

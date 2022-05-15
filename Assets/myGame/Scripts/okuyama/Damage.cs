@@ -6,12 +6,15 @@ public class Damage
 {
     /// <summary>プレイヤーが受けるダメージ</summary>
     public int _damage { get; }
-    /// <summary>エネミーが受けるダメージ</summary>
-    public int _enemyDamage { get; }
 
-    public Damage(int _nomalDamage ,int _scisorDamage)
+    public Damage(int _nomalDamage)
     {
         _damage = _nomalDamage;
-        _enemyDamage = _scisorDamage;
+    }
+    enum Type
+    {
+        //仮
+        Scissors = 0,
+        Bom = 1
     }
 }

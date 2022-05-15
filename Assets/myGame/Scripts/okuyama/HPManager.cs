@@ -28,7 +28,7 @@ namespace Perapera_Puroto
         protected Damage IDamage;
         private void Start()
         {
-            IDamage = new Damage(_enemyAttack, _playerAttack);
+            IDamage = new Damage(_playerAttack);
         }
 
         public void UpdateHP()
