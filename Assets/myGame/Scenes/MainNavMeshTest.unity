@@ -2547,7 +2547,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerAttack: 2
-  _playerHp: 10
+  _playerHp: 5
   _enemyAttack: 2
   _enemyScore: 1
   _playerHpText: {fileID: 1580638531}
@@ -2582,7 +2582,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94dfbe2f4f1bf93469b46d1f92ed1baf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireBullets: 800
+  fireBullets: 50
   g: -0.98
   _MovePower: 7
   _MoveMaxPower: 5
@@ -3382,9 +3382,9 @@ MonoBehaviour:
   - {fileID: 1184432685}
   - {fileID: 21830746}
   _enemyPrefab:
-  - {fileID: 5157569041118253016, guid: 0b0d377f7b0e5ab47bedf8a2bb2f892b, type: 3}
-  - {fileID: 5157569041118253016, guid: 0b0d377f7b0e5ab47bedf8a2bb2f892b, type: 3}
-  - {fileID: 5157569041118253016, guid: 0b0d377f7b0e5ab47bedf8a2bb2f892b, type: 3}
+  - {fileID: 3906693387415954359, guid: b9db16edabeab514ea5fd1bffcd27baa, type: 3}
+  - {fileID: 3906693387415954359, guid: 91e6d0ab90bf5d848886b12fd71e96dc, type: 3}
+  - {fileID: 3906693387415954359, guid: f5a32016b48e52a4ea420e17fe25a6a8, type: 3}
   _spawnTime: 2
   _speedUpCount: 10
   _speedUpSpeed: 1.1

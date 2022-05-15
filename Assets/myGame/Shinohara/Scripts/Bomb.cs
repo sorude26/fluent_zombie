@@ -8,6 +8,7 @@ public class Bomb : MonoBehaviour
     [SerializeField, Header("起動までの時間")] float _explosionTime = 3f;
     [SerializeField, Header("飛ばす時にかける力")] float _forcePower = 10f;
     [SerializeField] GameObject _effect = default;
+    [SerializeField] int _damage = 2;
 
     private void OnDrawGizmosSelected() //爆発範囲のギズモを表示する
     {
@@ -40,7 +41,8 @@ public class Bomb : MonoBehaviour
         {
             if (c.gameObject.tag == "Enemy")   //当たっているオブジェクト名がEnemyだったら削除する
             {
-                Destroy(c.gameObject);
+                c.GetComponent<EnemyHP>().Damage(_damage);
+               // Destroy(c.gameObject);
                 ScoreManager.AddScore();
             }
         }
