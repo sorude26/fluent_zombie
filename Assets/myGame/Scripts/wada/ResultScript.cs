@@ -19,8 +19,8 @@ namespace Perapera_Puroto
         int _stackTime = 1;
 
         /// <summary>êœÇ›è„Ç∞äJénéûÇÃçÇÇ≥</summary>
-        [SerializeField]
-        float _firstPos;
+        //[SerializeField]
+        //float _firstPos;
 
 
         float nowCadaver = 0;
@@ -47,7 +47,7 @@ namespace Perapera_Puroto
             //lowPosi = new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z);
             //topPosi = new Vector3(this.transform.position.x, this.transform.position.y + (high * (num)), this.transform.position.z);
 
-            cadaverPos = new Vector3(this.transform.position.x,this.transform.position.y + (high / 2) + _firstPos, this.transform.position.z);
+            cadaverPos = new Vector3(this.transform.position.x,this.transform.position.y + (high / 2) + high * 50, this.transform.position.z);
 
             float stuckInterval = (float)_stackTime / (float)_num;
             InvokeRepeating("StackDeth", 1, stuckInterval);
