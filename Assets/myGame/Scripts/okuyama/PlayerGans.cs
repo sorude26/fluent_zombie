@@ -4,9 +4,14 @@ using UnityEngine;
 
 public class PlayerGans : MonoBehaviour
 {
-    [SerializeField, Tooltip("武器の配列")] GameObject[] _gans;
-    [Tooltip("選択中の武器")] int _selectedIndex = 0;
-    [Tooltip("選択前の武器")] GameObject before;
+    [SerializeField, Tooltip("武器の配列")] 
+    GameObject[] _gans;
+    [Tooltip("選択中の武器")] 
+    int _selectedIndex = 0;
+    [Tooltip("選択前の武器")] 
+    GameObject before;
+    [Tooltip("配列操作用")]
+    const int INDEX_ONE = 1;
 
     void Start()
     {
@@ -27,39 +32,39 @@ public class PlayerGans : MonoBehaviour
 
     }
 
-    private void SelectGan()//右回り
+    public void SelectGan()//右回り
     {
-        if (_selectedIndex + 1 >= _gans.Length) { _selectedIndex = 0; }
+        if (_selectedIndex + INDEX_ONE >= _gans.Length) { _selectedIndex = 0; }
         else { _selectedIndex++; }
 
         var gan = _gans[_selectedIndex];
         gan.SetActive(true);
-        if (_selectedIndex - 1 < 0)
+        if (_selectedIndex - INDEX_ONE < 0)
         {
-            before = _gans[_gans.Length - 1];
+            before = _gans[_gans.Length - INDEX_ONE];
             before.SetActive(false);
         }
         else
         {
-            before = _gans[_selectedIndex - 1];
+            before = _gans[_selectedIndex - INDEX_ONE];
             before.SetActive(false);
         }
     }
-    private void LeftSelectGan()//左回り
+    public void LeftSelectGan()//左回り
     {
-        if (_selectedIndex - 1 < 0) { _selectedIndex = _gans.Length - 1; }
+        if (_selectedIndex - INDEX_ONE < 0) { _selectedIndex = _gans.Length - INDEX_ONE; }
         else { _selectedIndex--; }
 
         var gan = _gans[_selectedIndex];
         gan.SetActive(true);
-        if (_selectedIndex + 1 >= _gans.Length)
+        if (_selectedIndex + INDEX_ONE >= _gans.Length)
         {
             before = _gans[0];
             before.SetActive(false);
         }
         else
         {
-            before = _gans[_selectedIndex + 1];
+            before = _gans[_selectedIndex + INDEX_ONE];
             before.SetActive(false);
         }
     }
