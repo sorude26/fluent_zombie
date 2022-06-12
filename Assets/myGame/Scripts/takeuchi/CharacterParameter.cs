@@ -8,11 +8,11 @@ using UnityEngine;
 public class CharacterParameter
 {
     /// <summary> •Šíí” </summary>
-    public readonly int WEAPON_TYPES = Enum.GetValues(typeof(TWeaponType)).Length;
+    public readonly int WEAPON_TYPES = Enum.GetValues(typeof(WeaponType)).Length;
     /// <summary> ‘®«í” </summary>
-    public readonly int ATTRIBUTE_TYPES = Enum.GetValues(typeof(TAttributeType)).Length;
+    public readonly int ATTRIBUTE_TYPES = Enum.GetValues(typeof(AttributeType)).Length;
     /// <summary> ‘S‘®«í” </summary>
-    public readonly int ALL_ATTRIBUTE_TYPE_NUMBER = Enum.GetValues(typeof(TWeaponType)).Length + Enum.GetValues(typeof(TAttributeType)).Length;
+    public readonly int ALL_ATTRIBUTE_TYPE_NUMBER = Enum.GetValues(typeof(WeaponType)).Length + Enum.GetValues(typeof(AttributeType)).Length;
     /// <summary> Å‘å‘Ï‹v’l </summary>
     public readonly int MAX_HP;
     #region Private Field
@@ -128,7 +128,7 @@ public class CharacterParameter
 /// <summary>
 /// •Šíí
 /// </summary>
-public enum TWeaponType
+public enum WeaponType
 {
     LongRange,
     MiddleRange,
@@ -138,7 +138,7 @@ public enum TWeaponType
 /// <summary>
 /// ‘®«í
 /// </summary>
-public enum TAttributeType
+public enum AttributeType
 {
     Fire,
     Water,
