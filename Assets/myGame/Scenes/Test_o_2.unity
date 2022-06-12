@@ -3476,11 +3476,11 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 50
+    m_Font: {fileID: 12800000, guid: 4efb09ad72c60e64d8a430fb332b789e, type: 2}
+    m_FontSize: 0
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 3
+    m_MinSize: 0
     m_MaxSize: 50
     m_Alignment: 4
     m_AlignByGeometry: 0
@@ -4881,7 +4881,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1984546792}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 380a4a70d9c92c74aa3eca4834827cae, type: 3}
+  m_Script: {fileID: 11500000, guid: 1606b5caef19402469c0638d2263d000, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _gameTimer: {fileID: 1315453456}
@@ -4889,7 +4889,6 @@ MonoBehaviour:
   _gameOver: {fileID: 225957307}
   _gameClear: {fileID: 169079513}
   _scoreText: {fileID: 1252994710}
-  _isGameOver: 0
 --- !u!4 &1984546794
 Transform:
   m_ObjectHideFlags: 0
