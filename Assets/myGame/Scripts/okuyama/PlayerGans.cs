@@ -5,8 +5,8 @@ using UnityEngine;
 public class PlayerGans : MonoBehaviour
 {
     [SerializeField, Tooltip("武器の配列")] GameObject[] _gans;
-    int _selectedIndex = 0;
-    GameObject before;
+    [Tooltip("選択中の武器")] int _selectedIndex = 0;
+    [Tooltip("選択前の武器")] GameObject before;
 
     void Start()
     {
@@ -18,21 +18,20 @@ public class PlayerGans : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Z))
         {
-            if (_selectedIndex - 1 < 0) { _selectedIndex = _gans.Length - 1; }
-            else { _selectedIndex--; }
             LeftSelectGan();
         }
         if (Input.GetKeyDown(KeyCode.M))
         {
-            if(_selectedIndex +1 >= _gans.Length) { _selectedIndex = 0; }
-            else { _selectedIndex++; }
             SelectGan();
         }
-        
+
     }
 
     private void SelectGan()//右回り
     {
+        if (_selectedIndex + 1 >= _gans.Length) { _selectedIndex = 0; }
+        else { _selectedIndex++; }
+
         var gan = _gans[_selectedIndex];
         gan.SetActive(true);
         if (_selectedIndex - 1 < 0)
@@ -48,6 +47,9 @@ public class PlayerGans : MonoBehaviour
     }
     private void LeftSelectGan()//左回り
     {
+        if (_selectedIndex - 1 < 0) { _selectedIndex = _gans.Length - 1; }
+        else { _selectedIndex--; }
+
         var gan = _gans[_selectedIndex];
         gan.SetActive(true);
         if (_selectedIndex + 1 >= _gans.Length)
