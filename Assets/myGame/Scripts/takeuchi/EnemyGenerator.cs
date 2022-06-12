@@ -31,7 +31,7 @@ public class EnemyGenerator : MonoBehaviour
     {
         int r = Random.Range(0, _spawnPoints.Length);
         _number = Random.Range(0, _enemyPrefab.Length);
-        ObjectPoolManager.Instance.Use(_enemyPrefab[_number], _spawnPoints[r].position);
+        ObjectPoolManager.Instance.LimitUse(_enemyPrefab[_number], _spawnPoints[r].position);
     }
     private IEnumerator GeneratorUpdate()
     {

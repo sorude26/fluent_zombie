@@ -50,7 +50,7 @@ public class MissionBase : MonoBehaviour
             return;
         }
         IsMissionExecution = true;
-        StartCoroutine(MissionExecution());
+        CheckMissionClear();
     }
     /// <summary>
     /// クリア条件を満たしているか返す
@@ -81,12 +81,9 @@ public class MissionBase : MonoBehaviour
     /// ミッション実行処理、クリア条件を満たすと報酬を与える
     /// </summary>
     /// <returns></returns>
-    protected IEnumerator MissionExecution()
+    public void CheckMissionClear()
     {
-        while (!CheckClearConditions())
-        {
-            yield return null;
-        }
+        if (!CheckClearConditions()) { return; }
         GiveARewards();
         IsMissionExecution = false;
         IsEndMission = true;

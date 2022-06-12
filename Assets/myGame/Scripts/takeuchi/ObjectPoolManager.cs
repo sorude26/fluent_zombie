@@ -5,6 +5,7 @@ using UnityEngine;
 public class ObjectPoolManager : MonoBehaviour
 {
     private const int DEFAULT_POOL_COUNT = 10;
+    public const int DEFAULT_LIMIT_COUNT = 500;
     private static ObjectPoolManager instance;
     public static ObjectPoolManager Instance
     {
@@ -63,5 +64,18 @@ public class ObjectPoolManager : MonoBehaviour
         var obj = Use(useObject);
         obj.transform.position = pos;
         return obj;
+    }
+    public bool LimitUse(GameObject useObject,Vector3 pos,int limitCount = DEFAULT_LIMIT_COUNT)
+    {
+        if (!_keysDic.ContainsKey(useObject.name))
+        {
+            CreatePool(useObject);
+        }
+        if (_objectDic[_keysDic[useObject.name]].Count >= limitCount && limitCount > DEFAULT_POOL_COUNT)
+        {
+            return false;
+        }
+        Use(useObject,pos);
+        return true;
     }
 }

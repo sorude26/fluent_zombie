@@ -9,9 +9,12 @@ public class MissionManager : MonoBehaviour
     [SerializeField, Header("全ミッション")]
     private MissionContainer[] _missionContainers = default;
     [SerializeField]
-    private float _waitSeconds = 0.5f;
+    private float _waitStartCheckSeconds = 0.5f;
+    [SerializeField]
+    private float _waitClearCheckSeconds = 0.5f;
     private MissionContainer _currntMission = null;
-    private WaitForSeconds _wait = default;
+    private WaitForSeconds _waitStartCheck = default;
+    private WaitForSeconds _waitClearCheck = default;
     private bool _isStartMission = false;
     public bool IsGameEnd { get; set; }
     /// <summary>
@@ -22,20 +25,34 @@ public class MissionManager : MonoBehaviour
     {
         if (_isStartMission || targetMission < 0 || targetMission >= _missionContainers.Length) { return; }
         _currntMission = _missionContainers[targetMission];
-        _wait = new WaitForSeconds(_waitSeconds);
+        _waitStartCheck = new WaitForSeconds(_waitStartCheckSeconds);
+        _waitClearCheck = new WaitForSeconds(_waitClearCheckSeconds);
         _isStartMission = true;
+        StartCoroutine(StartMissionExecution());
         StartCoroutine(MissionExecution());
     }
     /// <summary>
     /// ミッション実行中処理
     /// </summary>
     /// <returns></returns>
-    private IEnumerator MissionExecution()
+    private IEnumerator StartMissionExecution()
     {
         while (!IsGameEnd)
         {
             _currntMission.CheckMissionStart();
-            yield return _wait;
+            yield return _waitStartCheck;
+        }
+    }
+    /// <summary>
+    /// クリアチェック処理
+    /// </summary>
+    /// <returns></returns>
+    private IEnumerator MissionExecution()
+    {
+        while (!IsGameEnd)
+        {
+            _currntMission.CheckMissionClear();
+            yield return _waitClearCheck;
         }
     }
 }

@@ -23,7 +23,9 @@ public class SpawnEnemy : MonoBehaviour
     }
     public void Spawn()
     {
-        ObjectPoolManager.Instance.Use(_enemy,transform.position);
-        gameObject.SetActive(false);
+        if (ObjectPoolManager.Instance.LimitUse(_enemy, transform.position))
+        {
+            gameObject.SetActive(false);
+        }
     }
 }
