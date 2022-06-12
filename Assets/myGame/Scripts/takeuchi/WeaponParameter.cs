@@ -7,9 +7,9 @@ public class WeaponParameter : ScriptableObject
     [SerializeField, Header("武器名称")]
     protected string _weaponName = "";
     [SerializeField, Header("武器種")]
-    protected TWeaponType _weapnType = default;
+    protected WeaponType _weapnType = default;
     [SerializeField, Header("属性")]
-    protected TAttributeType _attributeType = default;
+    protected AttributeType _attributeType = default;
     [SerializeField, Header("ダメージ")]
     protected int _weaponDamage = 1;
     [SerializeField, Header("武器種類値")]
@@ -19,9 +19,9 @@ public class WeaponParameter : ScriptableObject
     /// <summary> 武器名称 </summary>
     public string Name { get => _weaponName; }
     /// <summary> 武器種類 </summary>
-    public TWeaponType WeaponType { get => _weapnType; }
+    public WeaponType WeaponType { get => _weapnType; }
     /// <summary> 属性種類 </summary>
-    public TAttributeType AttributeType { get => _attributeType; }
+    public AttributeType AttributeType { get => _attributeType; }
     /// <summary> ダメージ量 </summary>
     public int Damage { get => _weaponDamage; }
     /// <summary> 武器種補正値 </summary>
