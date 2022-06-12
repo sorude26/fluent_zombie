@@ -29,4 +29,17 @@ public class MissionContainer : ScriptableObject
             container.CheckMissionStart();
         }
     }
+    public void CheckMissionClear()
+    {
+        foreach (var mission in _allMissions)
+        {
+            if (mission == null || !mission.IsMissionExecution) { continue; }
+            mission.CheckMissionClear();
+        }
+        foreach (var container in _containers)
+        {
+            if (container == null) { continue; }
+            container.CheckMissionClear();
+        }
+    }
 }
