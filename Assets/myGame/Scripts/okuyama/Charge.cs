@@ -17,8 +17,6 @@ public class Charge : MonoBehaviour
     bool _chargebool = false;
     [Tooltip("チャージスピード")] 
     float _chargeSpeed;
-    [Tooltip("チャージからの減少量")] 
-    float _decrease;
 
     void Start()
     {
@@ -27,15 +25,7 @@ public class Charge : MonoBehaviour
        
     void Update()
     {
-        ChargeMax();
-        if (Input.GetKey(KeyCode.Q))//チャージ開始
-        {
-            Chargeing();
-        }
-        if (Input.GetKeyUp(KeyCode.Q))//チャージボタンを離したとき
-        {
-            UpCharge();
-        }
+        
     }
 
     private void UpCharge()//チャージボタンを離したとき
@@ -44,7 +34,7 @@ public class Charge : MonoBehaviour
         _chargeEnd.Invoke();
     }
 
-    private void Chargeing()//チャージがないとき
+    public void Chargeing()//チャージがないとき
     {
         _chargeTimer += _chargeSpeed * Time.deltaTime;
         if (_chargeTimer > _chargeMax)
@@ -55,11 +45,11 @@ public class Charge : MonoBehaviour
             _chargeEnd.Invoke();
         }
     }
-    private void ChargeMax()//チャージがあるとき
+    public void ChargeMax(float decrease)//チャージがあるとき
     {
         if (_chargeTimer > 0 && _chargebool == false)
         {
-            _chargeTimer -= _decrease;
+            _chargeTimer -= decrease;
             if (_chargeTimer <= 0)
             {
                 _chargeing.Invoke();

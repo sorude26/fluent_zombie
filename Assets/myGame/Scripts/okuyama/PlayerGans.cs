@@ -32,7 +32,7 @@ public class PlayerGans : MonoBehaviour
 
     }
 
-    private void SelectGan()//âEâÒÇË
+    public void SelectGan()//âEâÒÇË
     {
         if (_selectedIndex + INDEX_ONE >= _gans.Length) { _selectedIndex = 0; }
         else { _selectedIndex++; }
@@ -50,7 +50,7 @@ public class PlayerGans : MonoBehaviour
             before.SetActive(false);
         }
     }
-    private void LeftSelectGan()//ç∂âÒÇË
+    public void LeftSelectGan()//ç∂âÒÇË
     {
         if (_selectedIndex - INDEX_ONE < 0) { _selectedIndex = _gans.Length - INDEX_ONE; }
         else { _selectedIndex--; }
