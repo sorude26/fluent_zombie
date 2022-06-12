@@ -23,6 +23,11 @@ public class Charge : MonoBehaviour
         {
             Chargeing();
         }
+        if (Input.GetKeyUp(KeyCode.Q))//チャージ開始
+        {
+            _chargebool = false;
+            _chargeEnd.Invoke();
+        }
     }
 
     private void Chargeing()//チャージがないとき
