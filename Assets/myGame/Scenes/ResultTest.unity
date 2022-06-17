@@ -334,8 +334,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _dethObj: {fileID: 3395136871076258908, guid: f43f0b966cfbb3e4795c7f0245ed1ea0, type: 3}
-  _num: 100
-  _stackTime: 10
+  _num: 1000
+  _stackTime: 100
 --- !u!4 &879111878
 Transform:
   m_ObjectHideFlags: 0
