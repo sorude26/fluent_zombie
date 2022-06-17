@@ -4,15 +4,11 @@ using UnityEngine;
 
 public class CharacterBase : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField]
+    protected int _id = default;
+    protected CharacterParameter _parameter = default;
+    protected virtual void Dead()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        GameData.Instance.SetCount(_id);
     }
 }
