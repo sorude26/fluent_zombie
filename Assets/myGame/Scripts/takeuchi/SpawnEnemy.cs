@@ -10,7 +10,11 @@ public class SpawnEnemy : MonoBehaviour
     private float _maxAwakeTime = 5f;
     [SerializeField]
     private Animator _animator;
-    private IEnumerator Start()
+    private void OnEnable()
+    {
+        StartCoroutine(StartSpawn());
+    }
+    private IEnumerator StartSpawn()
     {
         _animator = GetComponent<Animator>();
         float time = Random.Range(0, _maxAwakeTime);
@@ -19,8 +23,9 @@ public class SpawnEnemy : MonoBehaviour
     }
     public void Spawn()
     {
-        var enemy = Instantiate(_enemy);
-        enemy.transform.position = transform.position;
-        Destroy(gameObject);
+        if (ObjectPoolManager.Instance.LimitUse(_enemy, transform.position))
+        {
+            gameObject.SetActive(false);
+        }
     }
 }
