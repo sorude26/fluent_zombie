@@ -21,7 +21,7 @@ namespace Perapera_Puroto
                 
                 if (_enemyHp <= MINI_HP)
                 {
-                    gameObject.SetActive(false);
+                    Destroy(gameObject);
                     ScoreManager.AddScore(ADD_SCORE);
                 }
 
@@ -32,7 +32,7 @@ namespace Perapera_Puroto
             _enemyHp -= damage;
             if (_enemyHp <= MINI_HP)
             {
-                gameObject.SetActive(false);
+                Destroy(gameObject);
                 ScoreManager.AddScore(ADD_SCORE);
             }
         }
