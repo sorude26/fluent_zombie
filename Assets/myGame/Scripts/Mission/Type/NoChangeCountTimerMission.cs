@@ -21,7 +21,7 @@ public class NoChangeCountTimerMission : MissionConditions
             }
             else
             {
-                GameData.Instance.SetCount(_targetID, 0);
+                GameData.Instance.AddCount(_targetID, 0);
             }
             _timer = GameData.Instance.GameTime;
             return false;
