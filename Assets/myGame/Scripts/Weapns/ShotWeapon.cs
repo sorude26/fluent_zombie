@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ShotWeapon : WeaponBase
 {
+    const int BULLET_COUNT = 100;
     [SerializeField]
     protected Transform _muzzle = default;
     [SerializeField]
@@ -17,7 +18,10 @@ public class ShotWeapon : WeaponBase
     protected float _shotTimer = default;
     protected bool _isShooting = false;
     protected bool _isChargeing = false;
-    
+    private void Start()
+    {
+        PlayerInput.SetEnterInput(InputType.Fire1, ()=> { Attack(); });
+    }
     private void LateUpdate()
     {
         if (_shotInterval > _shotTimer)
@@ -32,16 +36,19 @@ public class ShotWeapon : WeaponBase
         if (_shotInterval > _shotTimer || _isChargeing) { return; }
         _chargeControl.ChargeMax(_chargeConsumption);
         _isShooting = true;
-        _bullet.transform.position = _muzzle.position;
-        _bullet.StartShot(GetDamage());
+        _shotTimer = 0;
+        var bullet = BulletPool.Instance.GetBullet(_bullet);
+        bullet.transform.position = _muzzle.position;
+        bullet.transform.forward = _muzzle.forward;
+        bullet.StartShot(GetDamage());
     }
     /// <summary>
     /// エネルギーをチャージする
     /// </summary>
-    public virtual void Charge() 
+    public virtual void Charge()
     {
         if (_isShooting) { return; }
         _isChargeing = true;
         _chargeControl.Chargeing();
-    }
+    }    
 }

@@ -5,6 +5,7 @@ using UnityEngine;
 /// <summary>
 /// キャラクターのパラメータクラス
 /// </summary>
+[CreateAssetMenu(menuName ="CharacterParameter")]
 public class CharacterParameter
 {
     /// <summary> 武器種数 </summary>

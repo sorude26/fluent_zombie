@@ -9,7 +9,7 @@ public abstract class WeaponBase : MonoBehaviour
 {
     [SerializeField]
     protected WeaponParameter _parameter = default;
-    protected CharacterParameter _owner = default;
+    protected CharacterParameter _owner = new CharacterParameter();
     /// <summary>
     /// Š—LÒ‚ğİ’è‚µA‰Šú‰»‚·‚é
     /// </summary>

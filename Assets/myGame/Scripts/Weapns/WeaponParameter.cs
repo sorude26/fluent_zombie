@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+[CreateAssetMenu(menuName ="WeaponParameter")]
 public class WeaponParameter : ScriptableObject
 {
     [SerializeField, Header("•Ší–¼Ì")]

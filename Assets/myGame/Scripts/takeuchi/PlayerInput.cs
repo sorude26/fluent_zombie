@@ -61,6 +61,10 @@ public class PlayerInput : MonoBehaviour
             _inputVector = Vector2.zero;
             _onExitInputDic[InputType.Move]?.Invoke();
         }
+        if (Input.GetButton("Fire1"))
+        {
+            _onEnterInputDic[InputType.Fire1]?.Invoke();
+        }
     }
     /// <summary>
     /// ‰Šú‰»ˆ—‚ğs‚¤
