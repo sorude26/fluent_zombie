@@ -29,9 +29,9 @@ public class PlayerInput : MonoBehaviour
     private Dictionary<InputType, Action> _onStayInputDic = default;
     /// <summary> 入力解除 </summary>
     private Dictionary<InputType, Action> _onExitInputDic = default;
-    public static PlayerInput Instance 
+    public static PlayerInput Instance
     {
-        get 
+        get
         {
             if (_instance == null)//nullならインスタンス化する
             {
@@ -46,7 +46,7 @@ public class PlayerInput : MonoBehaviour
     }
     /// <summary> 入力方向 </summary>
     public static Vector2 InputVector { get => Instance._inputVector; }
-    
+
     private void Update()
     {
         if (Input.GetButton("Horizontal") || Input.GetButton("Vertical"))
@@ -66,6 +66,10 @@ public class PlayerInput : MonoBehaviour
             _onEnterInputDic[InputType.Fire1]?.Invoke();
         }
     }
+    private void OnDestroy()
+    {
+        ResetInput();
+    }
     /// <summary>
     /// 初期化処理を行う
     /// </summary>
@@ -79,6 +83,16 @@ public class PlayerInput : MonoBehaviour
             _onEnterInputDic.Add((InputType)i, () => { });
             _onStayInputDic.Add((InputType)i, () => { });
             _onExitInputDic.Add((InputType)i, () => { });
+        }
+    }
+    private void ResetInput()
+    {
+        if (_instance == null) { return; }
+        for (int i = 0; i < Enum.GetValues(typeof(InputType)).Length; i++)
+        {
+            _onEnterInputDic[(InputType)i] = null;
+            _onStayInputDic[(InputType)i] = null;
+            _onExitInputDic[(InputType)i] = null;
         }
     }
     public static void SetEnterInput(InputType type, Action action)
