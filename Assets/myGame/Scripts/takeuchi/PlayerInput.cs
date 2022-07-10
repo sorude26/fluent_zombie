@@ -74,7 +74,27 @@ public class PlayerInput : MonoBehaviour
         }
         if (Input.GetButton("Fire1"))
         {
-            _onEnterInputDic[InputType.Fire1]?.Invoke();
+            if (Input.GetButtonDown("Fire1"))
+            {
+                _onEnterInputDic[InputType.Fire1]?.Invoke();
+            }
+            _onStayInputDic[InputType.Fire1]?.Invoke();
+        }
+        else if (Input.GetButtonUp("Fire1"))
+        {
+            _onExitInputDic[InputType.Fire1]?.Invoke();
+        }
+        if (Input.GetButton("Fire2"))
+        {
+            if (Input.GetButtonDown("Fire2"))
+            {
+                _onEnterInputDic[InputType.Fire2]?.Invoke();
+            }
+            _onStayInputDic[InputType.Fire2]?.Invoke();
+        }
+        else if (Input.GetButtonUp("Fire2"))
+        {
+            _onExitInputDic[InputType.Fire2]?.Invoke();
         }
     }
     private void OnDestroy()
@@ -122,7 +142,7 @@ public class PlayerInput : MonoBehaviour
     public static void LiftStayInput(InputType type, Action action)
     {
         if (_instance == null || !_initialized) { return; }
-        _instance._onEnterInputDic[type] -= action;
+        _instance._onStayInputDic[type] -= action;
     }
     public static void SetExitInput(InputType type, Action action)
     {
@@ -132,6 +152,6 @@ public class PlayerInput : MonoBehaviour
     public static void LiftExitInput(InputType type, Action action)
     {
         if (_instance == null || !_initialized) { return; }
-        _instance._onEnterInputDic[type] -= action;
+        _instance._onExitInputDic[type] -= action;
     }
 }
