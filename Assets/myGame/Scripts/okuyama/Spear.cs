@@ -10,7 +10,7 @@ public class Spear : WeaponBase
 
     private void OnEnable()
     {
-        PlayerInput.LiftEnterInput(InputType.Fire1,this.Attack);
+        PlayerInput.SetEnterInput(InputType.Fire1,this.Attack);
     }
 
     private void OnDisable()
