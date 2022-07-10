@@ -33,9 +33,9 @@ public class WeaponBullet : MonoBehaviour
     /// </summary>
     public virtual void StartShot(Damage damage)
     {
-        gameObject.SetActive(true);
         _damage = damage;
         _lifeTimer = 0;
+        gameObject.SetActive(true);
         _rb.velocity = transform.forward * _speed;
     }
 }

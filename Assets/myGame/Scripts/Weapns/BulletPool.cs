@@ -50,7 +50,7 @@ public class BulletPool : MonoBehaviour
         }
         var newBullet = Instantiate(bullet, transform);
         newBullet.gameObject.SetActive(false);
-        _bulletDic[_keysDic[bullet.gameObject.name]].Add(bullet);
-        return bullet;
+        _bulletDic[_keysDic[bullet.gameObject.name]].Add(newBullet);
+        return newBullet;
     }
 }

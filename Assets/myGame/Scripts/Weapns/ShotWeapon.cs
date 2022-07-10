@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class ShotWeapon : WeaponBase
 {
-    const int BULLET_COUNT = 100;
     [SerializeField]
     protected Transform _muzzle = default;
     [SerializeField]
@@ -18,9 +17,14 @@ public class ShotWeapon : WeaponBase
     protected float _shotTimer = default;
     protected bool _isShooting = false;
     protected bool _isChargeing = false;
-    private void Start()
+
+    private void OnEnable()
     {
-        PlayerInput.SetEnterInput(InputType.Fire1, ()=> { Attack(); });
+        PlayerInput.SetEnterInput(InputType.Fire1, this.Attack);
+    }
+    private void OnDisable()
+    {
+        PlayerInput.LiftEnterInput(InputType.Fire1, this.Attack);
     }
     private void LateUpdate()
     {
@@ -50,5 +54,5 @@ public class ShotWeapon : WeaponBase
         if (_isShooting) { return; }
         _isChargeing = true;
         _chargeControl.Chargeing();
-    }    
+    }
 }
