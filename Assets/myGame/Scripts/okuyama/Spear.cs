@@ -8,9 +8,14 @@ public class Spear : WeaponBase
     Animation _spearAnim;
     private Damage _damage = default;
 
-    private void Start()
+    private void OnEnable()
     {
         PlayerInput.LiftEnterInput(InputType.Fire1,this.Attack);
+    }
+
+    private void OnDisable()
+    {
+        PlayerInput.LiftEnterInput(InputType.Fire1, this.Attack);
     }
 
     private void OnTriggerEnter(Collider other)
