@@ -39,7 +39,7 @@ public class Charge : MonoBehaviour
         _chargeTimer += _chargeSpeed * Time.deltaTime;
         if (_chargeTimer > _chargeMax)
         {
-            Debug.Log($"チャージマックス{_chargeTimer}");
+            //Debug.Log($"チャージマックス{_chargeTimer}");
             _chargeTimer = _chargeMax;
             _chargebool = false;
             _chargeEnd.Invoke();
@@ -54,7 +54,7 @@ public class Charge : MonoBehaviour
             {
                 _chargeing.Invoke();
                 _chargebool = true;
-                Debug.Log($"チャージ無くなった{_chargeTimer}");
+                //Debug.Log($"チャージ無くなった{_chargeTimer}");
             }
         }
     }
