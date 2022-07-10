@@ -21,14 +21,15 @@ public enum InputType
 public class PlayerInput : MonoBehaviour
 {
     private static PlayerInput _instance = default;
+    private static bool _initialized = true;
     /// <summary> “ü—Í•ûŒü </summary>
     private Vector2 _inputVector = default;
     /// <summary> “ü—Í’¼Œã </summary>
-    private Dictionary<InputType, Action> _onEnterInputDic = default;
+    private Dictionary<InputType, Action> _onEnterInputDic = new Dictionary<InputType, Action>();
     /// <summary> “ü—Í’† </summary>
-    private Dictionary<InputType, Action> _onStayInputDic = default;
+    private Dictionary<InputType, Action> _onStayInputDic = new Dictionary<InputType, Action>();
     /// <summary> “ü—Í‰ğœ </summary>
-    private Dictionary<InputType, Action> _onExitInputDic = default;
+    private Dictionary<InputType, Action> _onExitInputDic = new Dictionary<InputType, Action>();
     public static PlayerInput Instance
     {
         get
@@ -45,7 +46,17 @@ public class PlayerInput : MonoBehaviour
         }
     }
     /// <summary> “ü—Í•ûŒü </summary>
-    public static Vector2 InputVector { get => Instance._inputVector; }
+    public static Vector2 InputVector
+    {
+        get
+        {
+            if (_instance == null || !_initialized)
+            {
+                return Vector2.zero;
+            }
+            return _instance._inputVector;
+        }
+    }
 
     private void Update()
     {
@@ -75,48 +86,52 @@ public class PlayerInput : MonoBehaviour
     /// </summary>
     private void Initialization()
     {
-        _onEnterInputDic = new Dictionary<InputType, Action>();
-        _onStayInputDic = new Dictionary<InputType, Action>();
-        _onExitInputDic = new Dictionary<InputType, Action>();
         for (int i = 0; i < Enum.GetValues(typeof(InputType)).Length; i++)
         {
-            _onEnterInputDic.Add((InputType)i, () => { });
-            _onStayInputDic.Add((InputType)i, () => { });
-            _onExitInputDic.Add((InputType)i, () => { });
+            _onEnterInputDic.Add((InputType)i, null);
+            _onStayInputDic.Add((InputType)i, null);
+            _onExitInputDic.Add((InputType)i, null);
         }
     }
     private void ResetInput()
     {
-        if (_instance == null) { return; }
+        if (_instance == null || !_initialized) { return; }
         for (int i = 0; i < Enum.GetValues(typeof(InputType)).Length; i++)
         {
-            _onEnterInputDic[(InputType)i] = null;
-            _onStayInputDic[(InputType)i] = null;
-            _onExitInputDic[(InputType)i] = null;
+            _instance._onEnterInputDic[(InputType)i] = null;
+            _instance._onStayInputDic[(InputType)i] = null;
+            _instance._onExitInputDic[(InputType)i] = null;
         }
+        _initialized = false;
     }
     public static void SetEnterInput(InputType type, Action action)
     {
+        if (!_initialized) { return; }
         Instance._onEnterInputDic[type] += action;
     }
     public static void LiftEnterInput(InputType type, Action action)
     {
+        if (!_initialized) { return; }
         Instance._onEnterInputDic[type] -= action;
     }
     public static void SetStayInput(InputType type, Action action)
     {
+        if (!_initialized) { return; }
         Instance._onStayInputDic[type] += action;
     }
     public static void LiftStayInput(InputType type, Action action)
     {
-        Instance._onEnterInputDic[type] -= action;
+        if (_instance == null || !_initialized) { return; }
+        _instance._onEnterInputDic[type] -= action;
     }
     public static void SetExitInput(InputType type, Action action)
     {
-        Instance._onExitInputDic[type] += action;
+        if (_instance == null || !_initialized) { return; }
+        _instance._onExitInputDic[type] += action;
     }
     public static void LiftExitInput(InputType type, Action action)
     {
-        Instance._onEnterInputDic[type] -= action;
+        if (_instance == null || !_initialized) { return; }
+        _instance._onEnterInputDic[type] -= action;
     }
 }
