@@ -16,17 +16,11 @@ public class Mine : MonoBehaviour
         if (other.gameObject.TryGetComponent(out IDamageApplicable target))
         {
             target.AddDamage(_damage);
+            Destroy(this.gameObject);
         }
-        if(other.gameObject.tag == "Player") { StartCoroutine(Stop()); }
     }
     public void StartShot(Damage damage)
     {
-        //_spearAnim.Play();
-    }
-
-    IEnumerator Stop()
-    {
-        yield return new WaitForSeconds(2);
-        //Destroy(this.gameObject);
+        _spearAnim.Play();
     }
 }

@@ -30,15 +30,7 @@ public class LandminesWeapon : WeaponBase
     public override void Attack()
     {
         if (_charge._chargebool == false) { return; }
-        Instantiate(_mines, this.gameObject.transform.position, Quaternion.identity);
-        _mine.StartShot(GetDamage());
-        _charge.ChargeMax(_chargeConsumption);
-    }
-
-    IEnumerator Interval()
-    {
-        yield return new WaitForSeconds(_interval);
-        Instantiate(_mines, this.gameObject.transform.position, Quaternion.identity);
+        Instantiate(_mines, gameObject.transform.position, Quaternion.identity);
         _mine.StartShot(GetDamage());
         _charge.ChargeMax(_chargeConsumption);
     }
