@@ -4,9 +4,14 @@ using UnityEngine;
 
 public class Spear : WeaponBase
 {
-    [SerializeField,Tooltip("槍のアニメーション")]
+    [SerializeField, Tooltip("槍のアニメーション")]
     Animation _spearAnim;
-    private Damage _damage = default;
+    [SerializeField, Tooltip("ダメージクラス")]
+    Damage _damage = default;
+    [SerializeField, Tooltip("チャージクラス")]
+    Charge _charge = default;
+    [SerializeField, Tooltip("チャージの消費量")]
+    float _chargeConsumption;
 
     private void OnEnable()
     {
@@ -28,7 +33,9 @@ public class Spear : WeaponBase
 
     public override void Attack()
     {
+        if(_charge._chargebool == false) { return; }
         StartShot(GetDamage());
+        _charge.ChargeMax(_chargeConsumption);
     }
     public void StartShot(Damage damage)
     {
