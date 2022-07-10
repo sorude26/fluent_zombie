@@ -37,6 +37,7 @@ public class ShotWeapon : WeaponBase
     }
     public override void Attack()
     {
+        if (_chargeControl._chargebool == false) { return; }
         if (_shotInterval > _shotTimer || _isChargeing) { return; }
         _chargeControl.ChargeMax(_chargeConsumption);
         _isShooting = true;

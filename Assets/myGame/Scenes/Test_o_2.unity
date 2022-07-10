@@ -202,7 +202,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &27659671
 Transform:
   m_ObjectHideFlags: 0
@@ -231,6 +231,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _parameter: {fileID: 11400000, guid: 4cfc5137116e5ca44869da9599a40b23, type: 2}
+  _spearAnim: {fileID: 0}
+  _charge: {fileID: 1759357488}
+  _chargeConsumption: 0
 --- !u!65 &27659673
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -239,7 +242,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 27659670}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1.7656447, y: 1, z: 1}
@@ -975,6 +978,68 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!1 &284425710
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 284425711}
+  - component: {fileID: 284425713}
+  - component: {fileID: 284425712}
+  m_Layer: 0
+  m_Name: Dagger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &284425711
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 284425710}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.25, y: 0, z: 0.01}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1759357486}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &284425712
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 284425710}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 2.0293353}
+  m_Center: {x: 2.2149938e-17, y: 0, z: 0.009371161}
+--- !u!114 &284425713
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 284425710}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4673c7c6dd3f7294cbdacc4871bc0edd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _parameter: {fileID: 11400000, guid: 4cfc5137116e5ca44869da9599a40b23, type: 2}
+  _spearAnim: {fileID: 0}
+  _charge: {fileID: 1759357488}
+  _chargeConsumption: 0.5
 --- !u!1 &383051709
 GameObject:
   m_ObjectHideFlags: 0
@@ -2123,6 +2188,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e772c7b2eaaa88940892831d1c9e3ba6, type: 3}
+--- !u!1 &887931733 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7186047356097487891, guid: e772c7b2eaaa88940892831d1c9e3ba6, type: 3}
+  m_PrefabInstance: {fileID: 887931732}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &935448342
 GameObject:
   m_ObjectHideFlags: 0
@@ -2584,60 +2654,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b66aed192622acf47a0b7163eaf09aad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _chargeing:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1759357487}
-        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
-        m_MethodName: set_enabled
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 952398980}
-        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
-        m_MethodName: set_enabled
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  _chargeEnd:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 952398980}
-        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
-        m_MethodName: set_enabled
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 1759357487}
-        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
-        m_MethodName: set_enabled
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
+  _chargebool: 1
 --- !u!1 &956213534
 GameObject:
   m_ObjectHideFlags: 0
@@ -4780,17 +4797,19 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7186047356097487894, guid: e772c7b2eaaa88940892831d1c9e3ba6, type: 3}
   m_PrefabInstance: {fileID: 887931732}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1759357487 stripped
+--- !u!114 &1759357488
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7186047356097487893, guid: e772c7b2eaaa88940892831d1c9e3ba6, type: 3}
-  m_PrefabInstance: {fileID: 887931732}
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 887931733}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 035e0eb76670efb47b35990af7631794, type: 3}
+  m_Script: {fileID: 11500000, guid: b66aed192622acf47a0b7163eaf09aad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _chargebool: 1
 --- !u!1 &1845970577
 GameObject:
   m_ObjectHideFlags: 0

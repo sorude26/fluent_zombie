@@ -5,56 +5,51 @@ using UnityEngine.Events;
 
 public class Charge : MonoBehaviour
 {
-    [SerializeField, Tooltip("チャージ中に武器を使えなくする")] 
-    UnityEvent _chargeing;
-    [SerializeField, Tooltip("チャージ完了時に武器を使えるようにする")] 
-    UnityEvent _chargeEnd;
-    [Tooltip("チャージまでに使える時間")] 
+    [SerializeField, Tooltip("チャージまでに使える時間")] 
     float _chargeTimer = 5.0f;
-    [Tooltip("チャージの最大値")] 
+    [SerializeField, Tooltip("チャージの最大値")] 
     float _chargeMax = 10;
-    [Tooltip("発射できるか")] 
-    bool _chargebool = false;
-    [Tooltip("チャージスピード")] 
+    [SerializeField, Tooltip("チャージスピード")]
     float _chargeSpeed;
+    [Tooltip("発射できる")]
+    public bool _chargebool = true;
 
-    void Start()
+    private void OnEnable()
     {
-        
+        PlayerInput.SetStayInput(InputType.Fire2, this.Chargeing);
     }
-       
-    void Update()
+
+    private void OnDisable()
     {
-        
+        PlayerInput.LiftEnterInput(InputType.Fire2, this.UpCharge);
     }
 
     private void UpCharge()//チャージボタンを離したとき
     {
-        _chargebool = false;
-        _chargeEnd.Invoke();
+        _chargebool = true;
     }
 
-    public void Chargeing()//チャージがないとき
+    /// <summary>チャージする</summary>
+    public void Chargeing()
     {
         _chargeTimer += _chargeSpeed * Time.deltaTime;
         if (_chargeTimer > _chargeMax)
         {
-            //Debug.Log($"チャージマックス{_chargeTimer}");
             _chargeTimer = _chargeMax;
-            _chargebool = false;
-            _chargeEnd.Invoke();
+            _chargebool = true;
         }
     }
-    public void ChargeMax(float decrease)//チャージがあるとき
+
+    /// <summary>ゲージを減らす</summary>
+    /// <param name="decrease"></param>
+    public void ChargeMax(float decrease)
     {
-        if (_chargeTimer > 0 && _chargebool == false)
+        if (_chargeTimer > 0 && _chargebool == true)
         {
             _chargeTimer -= decrease;
             if (_chargeTimer <= 0)
             {
-                _chargeing.Invoke();
-                _chargebool = true;
-                //Debug.Log($"チャージ無くなった{_chargeTimer}");
+                _chargebool = false;
             }
         }
     }
