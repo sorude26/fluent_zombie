@@ -13,48 +13,48 @@ public class Charge : MonoBehaviour
     float _chargeTimer = 5.0f;
     [Tooltip("チャージの最大値")] 
     float _chargeMax = 10;
-    [Tooltip("発射できるか")] 
-    bool _chargebool = false;
+    [Tooltip("発射できる")]
+    public bool _chargebool = true;
     [Tooltip("チャージスピード")] 
     float _chargeSpeed;
 
-    void Start()
+    private void OnEnable()
     {
-        
+        PlayerInput.SetEnterInput(InputType.Fire2, this.Chargeing);
     }
-       
-    void Update()
+
+    private void OnDisable()
     {
-        
+        PlayerInput.LiftEnterInput(InputType.Fire2, this.UpCharge);
     }
 
     private void UpCharge()//チャージボタンを離したとき
     {
-        _chargebool = false;
-        _chargeEnd.Invoke();
+        _chargebool = true;
     }
 
-    public void Chargeing()//チャージがないとき
+    /// <summary>チャージする</summary>
+    public void Chargeing()
     {
         _chargeTimer += _chargeSpeed * Time.deltaTime;
         if (_chargeTimer > _chargeMax)
         {
-            //Debug.Log($"チャージマックス{_chargeTimer}");
             _chargeTimer = _chargeMax;
-            _chargebool = false;
+            _chargebool = true;
             _chargeEnd.Invoke();
         }
     }
-    public void ChargeMax(float decrease)//チャージがあるとき
+
+    /// <summary>ゲージを減らす</summary>
+    /// <param name="decrease"></param>
+    public void ChargeMax(float decrease)
     {
-        if (_chargeTimer > 0 && _chargebool == false)
+        if (_chargeTimer > 0 && _chargebool == true)
         {
             _chargeTimer -= decrease;
             if (_chargeTimer <= 0)
             {
-                _chargeing.Invoke();
-                _chargebool = true;
-                //Debug.Log($"チャージ無くなった{_chargeTimer}");
+                _chargebool = false;
             }
         }
     }
