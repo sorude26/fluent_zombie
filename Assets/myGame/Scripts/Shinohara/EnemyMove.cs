@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.AI;
+using System.Threading.Tasks;
 
 namespace Perapera_Puroto
 {
@@ -13,7 +14,9 @@ namespace Perapera_Puroto
         // Start is called before the first frame update
         void Start()
         {
-            _agent = GetComponent<NavMeshAgent>();
+            // _agent = GetComponent<NavMeshAgent>();
+            _agent = gameObject.AddComponent<NavMeshAgent>();
+            _agent.enabled = true;
 
             if (GameObject.Find("Player") != null)  //ƒvƒŒƒCƒ„[‚ª‘¶İ‚·‚ê‚Îæ“¾‚·‚é
             {
