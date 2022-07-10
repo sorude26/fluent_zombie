@@ -5,22 +5,18 @@ using UnityEngine.Events;
 
 public class Charge : MonoBehaviour
 {
-    [SerializeField, Tooltip("チャージ中に武器を使えなくする")] 
-    UnityEvent _chargeing;
-    [SerializeField, Tooltip("チャージ完了時に武器を使えるようにする")] 
-    UnityEvent _chargeEnd;
-    [Tooltip("チャージまでに使える時間")] 
+    [SerializeField, Tooltip("チャージまでに使える時間")] 
     float _chargeTimer = 5.0f;
-    [Tooltip("チャージの最大値")] 
+    [SerializeField, Tooltip("チャージの最大値")] 
     float _chargeMax = 10;
+    [SerializeField, Tooltip("チャージスピード")]
+    float _chargeSpeed;
     [Tooltip("発射できる")]
     public bool _chargebool = true;
-    [Tooltip("チャージスピード")] 
-    float _chargeSpeed;
 
     private void OnEnable()
     {
-        PlayerInput.SetEnterInput(InputType.Fire2, this.Chargeing);
+        PlayerInput.SetStayInput(InputType.Fire2, this.Chargeing);
     }
 
     private void OnDisable()
@@ -41,7 +37,6 @@ public class Charge : MonoBehaviour
         {
             _chargeTimer = _chargeMax;
             _chargebool = true;
-            _chargeEnd.Invoke();
         }
     }
 
