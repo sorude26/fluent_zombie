@@ -12,7 +12,7 @@ public class NavigationManager : MonoBehaviour
     [SerializeField]
     private float _naviIntervalTime = 0.2f;
     [SerializeField]
-    private Transform _target = default;
+    private Transform _defaultTarget = default;
     [SerializeField]
     private int _range = 100;
     [SerializeField]
@@ -42,7 +42,7 @@ public class NavigationManager : MonoBehaviour
         _updateInterval = new WaitForSeconds(_updateIntervalTime);
         _naviInterval = new WaitForSeconds(_naviIntervalTime);
         _navMap = _mapCreater.CreateMap();
-        RequestTargetNavigation(_target);
+        RequestTargetNavigation(_defaultTarget);
         StartCoroutine(NavigationUpdate());
     }
     private IEnumerator NavigationUpdate()
@@ -83,6 +83,14 @@ public class NavigationManager : MonoBehaviour
             return;
         }
         _naviTarget.Add(target);
+    }
+    public Vector3 GetMoveDir(Transform user)
+    {
+        if (_defaultTarget is null)
+        {
+            return Vector3.zero;
+        }
+        return GetMoveDir(user, _defaultTarget.gameObject.name);
     }
     public Vector3 GetMoveDir(Transform user, string targetKey)
     {
