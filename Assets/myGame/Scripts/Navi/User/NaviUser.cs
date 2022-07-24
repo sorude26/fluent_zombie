@@ -51,6 +51,10 @@ public class NaviUser : MonoBehaviour
             {
                 _currentDir = NavigationManager.Instance.GetMoveDir(_body, topTarget.gameObject.name);
             }
+            else
+            {
+                _currentDir = Vector3.zero;
+            }
         }
     }
     private void FixedUpdate()
