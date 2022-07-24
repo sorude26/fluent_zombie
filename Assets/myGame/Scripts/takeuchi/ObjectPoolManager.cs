@@ -59,6 +59,24 @@ public class ObjectPoolManager : MonoBehaviour
         _objectDic[_keysDic[useObject.name]].Add(obj);
         return obj;
     }
+    public GameObject LimitUse(GameObject useObject)
+    {
+        if (!_keysDic.ContainsKey(useObject.name))
+        {
+            CreatePool(useObject);
+        }
+        foreach (var listObj in _objectDic[_keysDic[useObject.name]])
+        {
+            if (listObj.activeInHierarchy)
+            {
+                continue;
+            }
+            listObj.SetActive(true);
+            return listObj;
+        }
+        return null;
+    }
+
     public GameObject Use(GameObject useObject, Vector3 pos)
     {
         var obj = Use(useObject);
@@ -73,6 +91,12 @@ public class ObjectPoolManager : MonoBehaviour
         }
         if (_objectDic[_keysDic[useObject.name]].Count >= limitCount && limitCount > DEFAULT_POOL_COUNT)
         {
+            var obj = LimitUse(useObject);
+            if (obj != null)
+            {
+                obj.transform.position = pos;
+                return true;
+            }
             return false;
         }
         Use(useObject,pos);
