@@ -14,6 +14,8 @@ public class ShotWeapon : WeaponBase
     protected Charge _chargeControl = default;
     [SerializeField]
     protected float _chargeConsumption = 0.1f;
+    [SerializeField]
+    protected float _diffusivity = 0;
     protected float _shotTimer = default;
     protected bool _isShooting = false;
     protected bool _isChargeing = false;
@@ -43,7 +45,7 @@ public class ShotWeapon : WeaponBase
         _shotTimer = 0;
         var bullet = BulletPool.Instance.GetBullet(_bullet);
         bullet.transform.position = _muzzle.position;
-        bullet.transform.forward = _muzzle.forward;
+        bullet.transform.forward = Diffusivity(_muzzle.forward, _diffusivity);
         bullet.StartShot(GetDamage());
     }
     /// <summary>
@@ -54,5 +56,15 @@ public class ShotWeapon : WeaponBase
         if (_isShooting) { return; }
         _isChargeing = true;
         _chargeControl.Chargeing();
+    }
+    protected Vector3 Diffusivity(Vector3 target,float diffusivity)
+    {
+        if (diffusivity > 0)
+        {
+            target.x += Random.Range(-diffusivity, diffusivity);
+            target.y += Random.Range(-diffusivity, diffusivity);
+            target.z += Random.Range(-diffusivity, diffusivity);
+        }
+        return target;
     }
 }
