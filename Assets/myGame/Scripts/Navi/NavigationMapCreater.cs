@@ -2,7 +2,9 @@ using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+/// <summary>
+/// マップ生成を行う
+/// </summary>
 public class NavigationMapCreater : MonoBehaviour
 {
     [SerializeField,Header("移動点配置間隔")]
@@ -19,13 +21,16 @@ public class NavigationMapCreater : MonoBehaviour
     private int _maxHorizontalIndex = 1;
     private SquaresIndex _mapIndex = default;
     private List<NaviPoint> _naviMap = new List<NaviPoint>();
-    
+    /// <summary>
+    /// 生成したマップを返す
+    /// </summary>
+    /// <returns></returns>
     public NavigationMap CreateMap()
     {
         Vector3 start = _startPoint.position;
         Vector3 end = _endPoint.position;
         _createSpan = _pointSpanRange / 2;
-        while (true)
+        while (true)//rayでマップに登録する
         {
             SetNaviPoint(start);
             start.x += _createSpan;
@@ -43,13 +48,17 @@ public class NavigationMapCreater : MonoBehaviour
         }
         Debug.Log($"CreateEnd Horizontal:{_maxHorizontalIndex},Vertical:{_indexCount / _maxHorizontalIndex}");
         _mapIndex = new SquaresIndex(_maxHorizontalIndex, _indexCount / _maxHorizontalIndex);
-        foreach (var point in _naviMap)
+        foreach (var point in _naviMap)//各点の周囲を連結する
         {
             SetNeighorPoint(point);
         }
         Debug.Log($"ConnectEnd TotalIndex:{_indexCount},TotalCount:{_naviMap.Count}");
         return new NavigationMap(_naviMap);
     }
+    /// <summary>
+    /// 指定レイヤーの存在する点をマップに追加する
+    /// </summary>
+    /// <param name="start"></param>
     private void SetNaviPoint(Vector3 start)
     {
         if(Physics.Raycast(start, Vector3.down, out RaycastHit hit, _rayRange, _navigationLayer))
@@ -58,6 +67,10 @@ public class NavigationMapCreater : MonoBehaviour
         }
         _indexCount++;
     }
+    /// <summary>
+    /// 探索点の周囲の点を登録する
+    /// </summary>
+    /// <param name="point"></param>
     private void SetNeighorPoint(NaviPoint point)
     {
         foreach (var neighor in _mapIndex.GetNeighor(point.IndexID))//八方向

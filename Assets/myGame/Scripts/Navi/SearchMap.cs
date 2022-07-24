@@ -77,11 +77,18 @@ public class SearchMap<TPoint> where TPoint : IMapPoint<TPoint>
         _updatePoints[targetKey].Clear();
     }
 }
-
+/// <summary>
+/// 探索点インターフェース
+/// </summary>
+/// <typeparam name="TMapPoint"></typeparam>
 public interface IMapPoint<TMapPoint> where TMapPoint : IMapPoint<TMapPoint>
 {
+    /// <summary> 生成ID </summary>
     public int IndexID { get; }
+    /// <summary> 侵入不可フラグ </summary>
     public bool IsNoEntry { get; set; }
+    /// <summary> 近接点リスト </summary>
     public List<TMapPoint> ConnectPoint { get; set; }
+    /// <summary> 足跡ディクショナリー </summary>
     public Dictionary<string, int> FootprintDic { get; set; }
 }

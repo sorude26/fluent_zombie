@@ -42,7 +42,6 @@ public class NavigationManager : MonoBehaviour
         _updateInterval = new WaitForSeconds(_updateIntervalTime);
         _naviInterval = new WaitForSeconds(_naviIntervalTime);
         _navMap = _mapCreater.CreateMap();
-        _navMap.Initialization();
         RequestTargetNavigation(_target);
         StartCoroutine(NavigationUpdate());
     }

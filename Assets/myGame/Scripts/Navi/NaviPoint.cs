@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+/// <summary>
+/// ’Tõ“_ƒNƒ‰ƒX
+/// </summary>
 public class NaviPoint : IMapPoint<NaviPoint>
 {
     public Vector3 Pos { get; }
