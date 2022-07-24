@@ -20,6 +20,9 @@ public class EnemyGenerator : MonoBehaviour
     [Tooltip("出現速度上昇速度")]
     [SerializeField]
     private float _speedUpSpeed = 1.1f;
+    [SerializeField]
+    private int _maxGeneratCount = 100;
+    private float _spawnRange = 10f;
     private float _spawnSpeed = 1f;
     /// <summary> 起動フラグ </summary>
     private bool _isStart = false;
@@ -31,7 +34,12 @@ public class EnemyGenerator : MonoBehaviour
     {
         int r = Random.Range(0, _spawnPoints.Length);
         _number = Random.Range(0, _enemyPrefab.Length);
-        ObjectPoolManager.Instance.LimitUse(_enemyPrefab[_number], _spawnPoints[r].position);
+        float x = Random.Range(-_spawnRange, _spawnRange);
+        float y = Random.Range(-_spawnRange, _spawnRange);
+        var pos = _spawnPoints[r].position;
+        pos.x += x;
+        pos.z += y;
+        ObjectPoolManager.Instance.LimitUse(_enemyPrefab[_number], pos, _maxGeneratCount);
     }
     private IEnumerator GeneratorUpdate()
     {
